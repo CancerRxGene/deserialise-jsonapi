@@ -1,0 +1,23 @@
+{
+  "name": "deserialise-jsonapi",
+  "version": "0.0.1",
+  "description": "Library to deserialise JSONAPI responses to plain javascript objects.",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Donnyvdm/deserialise-jsonapi.git"
+  },
+  "keywords": [
+    "javascript",
+    "jsonapi"
+  ],
+  "author": "Donny van der Meer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Donnyvdm/deserialise-jsonapi/issues"
+  },
+  "homepage": "https://github.com/Donnyvdm/deserialise-jsonapi#readme"
+}
