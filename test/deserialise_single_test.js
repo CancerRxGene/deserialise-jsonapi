@@ -1,4 +1,8 @@
-const should = require('chai').should();
+const chai = require("chai");
+const chaiAsPromised = require("chai-as-promised");
+chai.use(chaiAsPromised);
+const should = chai.should();
+
 const Deserialiser = require('../lib/deserialiser')
 
 describe("Single object deserialisation", () => {
@@ -6,14 +10,40 @@ describe("Single object deserialisation", () => {
   it('should be a function', () => {
     Deserialiser.should.be.a('function');
     let des = new Deserialiser();
-    console.log(des);
     des.should.not.be.undefined;
   });
 
-  it('loads from .data', () => {
-    true.should.be.true;
+  it('should reject a response without data', (done) => {
+    let des = new Deserialiser();
+    des.deserialise({})
+    .then((res) => {
+      done(new Error('was not supposed to succeed'));
+    })
+    .catch((error) => {
+      error.should.equal("No data found");
+      done()
+    })
   });
-  it('creates an object', () => {
 
+  it('loads from data.attributes', (done) => {
+    let des = new Deserialiser();
+    let jsonapi = {
+      data: {
+        id: "testid",
+        type: "testtype",
+        attributes: {
+          name: "test"
+        }
+      }
+    }
+
+    des.deserialise(jsonapi)
+    .then((res) => {
+      res.should.eql({id: "testid", type: "testtype", name: "test"});
+      done();
+    })
+    .catch((error) => {
+      done(error)
+    })
   });
 });
