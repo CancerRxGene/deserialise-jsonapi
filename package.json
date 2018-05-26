@@ -4,7 +4,7 @@
   "description": "Library to deserialise JSONAPI responses to plain javascript objects.",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha"
+    "test": "nodemon --exec 'mocha -R dot'"
   },
   "repository": {
     "type": "git",
