@@ -509,6 +509,11 @@ describe("Deserialisation relationship resolver", () => {
             parents: {
               id: "parentid1",
               type: "parent",
+            },
+            children: {
+              id: "childid2",
+              type: "child",
+              cname: "childname2"
             }
           }
         }
