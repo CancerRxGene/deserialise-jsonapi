@@ -58,131 +58,147 @@ describe("Deserialisation relationship resolver", () => {
 
   it('should resolve included relationship list', (done) => {
     let des = new Deserialiser();
-    mock_relationships = {
-      children: {
-        data: [
-          {
-            type: "childtype1",
-            id: "childid1"
-          }
-        ]
-      }
-    }
 
-    mock_included = [
-      {
-        id: "childid1",
-        type: "childtype1",
-        attributes: {
-          name: "childname1"
-        }
-      }
-    ]
-
-    des.process_included(mock_included)
-    .then(() => {
-      des.process_relationships(mock_relationships)
-        .then((res) => {
-          res.should.eql({
-            children: [
+    let jsonapi = {
+      data: {
+        id: "parent1",
+        type: "node",
+        relationships:{
+          children: {
+            data: [
               {
                 type: "childtype1",
-                id: "childid1",
-                name: "childname1"
+                id: "childid1"
               }
             ]
-          })
-          done()
-        })
-        .catch((error) => {
-          done(error);
-        })
-    })
+          }
+        }
+      },
+      included: [
+        {
+          id: "childid1",
+          type: "childtype1",
+          attributes: {
+            name: "childname1"
+          }
+        }
+      ]
+    }
 
+    des.deserialise(jsonapi)
+    .then((res) => {
+      res.should.eql({
+        id: "parent1",
+        type: "node",
+        children: [
+          {
+            type: "childtype1",
+            id: "childid1",
+            name: "childname1"
+          }
+        ]
+      })
+      done()
+    })
+    .catch((error) => {
+      done(error);
+    })
   });
 
   it('should resolve included relationship item', (done) => {
     let des = new Deserialiser();
-    mock_relationships = {
-      children: {
-        data: {
-          type: "childtype1",
-          id: "childid1"
+
+    let jsonapi = {
+      data: {
+        id: "parent1",
+        type: "node",
+        relationships:{
+          children: {
+            data: {
+              type: "childtype1",
+              id: "childid1"
+            }
+          }
         }
-      }
+      },
+      included: [
+        {
+          id: "childid1",
+          type: "childtype1",
+          attributes: {
+            name: "childname1"
+          }
+        }
+      ]
     }
 
-    mock_included = [
-      {
-        id: "childid1",
-        type: "childtype1",
-        attributes: {
+    des.deserialise(jsonapi)
+    .then((res) => {
+      res.should.eql({
+        id: "parent1",
+        type: "node",
+        children: {
+          type: "childtype1",
+          id: "childid1",
           name: "childname1"
         }
-      }
-    ]
-
-    des.process_included(mock_included)
-    .then(() => {
-      des.process_relationships(mock_relationships)
-        .then((res) => {
-          res.should.eql({
-            children: {
-              type: "childtype1",
-              id: "childid1",
-              name: "childname1"
-            }
-          })
-          done()
-        })
-        .catch((error) => {
-          done(error);
-        })
+      })
+      done()
+    })
+    .catch((error) => {
+      done(error);
     })
 
   });
 
   it('should resolve multilevel relationships', (done) => {
     let des = new Deserialiser();
-    mock_relationships = {
-      child: {
-        data: {
-          type: "childtype",
-          id: "childid1"
-        }
-      }
-    }
 
-    mock_included = [
-      {
-        id: "childid1",
-        type: "childtype",
-        attributes: {
-          name: "childname1"
-        },
+    let jsonapi = {
+      data: {
+        id: "parent1",
+        type: "node",
         relationships: {
-          grandchild: {
+          children: {
             data: {
-              id: "grandchildid1",
-              type: "grandchild"
+              type: "childtype",
+              id: "childid1"
             }
           }
         }
       },
-      {
-        id: "grandchildid1",
-        type: "grandchild",
-        attributes: {
-          gcname: "grandchildname1"
+      included: [
+        {
+          id: "childid1",
+          type: "childtype",
+          attributes: {
+            name: "childname1"
+          },
+          relationships: {
+            grandchild: {
+              data: {
+                id: "grandchildid1",
+                type: "grandchild"
+              }
+            }
+          }
+        },
+        {
+          id: "grandchildid1",
+          type: "grandchild",
+          attributes: {
+            gcname: "grandchildname1"
+          }
         }
-      }
-    ]
+      ]
+    }
 
-    des.process_included(mock_included)
-    .then(() => { return des.process_relationships(mock_relationships)} )
+    des.deserialise(jsonapi)
     .then((res) => {
       res.should.eql({
-        child: {
+        id: "parent1",
+        type: "node",
+        children: {
           type: "childtype",
           id: "childid1",
           name: "childname1",
