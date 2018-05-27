@@ -56,28 +56,4 @@ describe("Deserialisation include processor", () => {
       })
   });
 
-  it('should resolve attributes in included items', (done) => {
-    let des = new Deserialiser();
-    let mock_inc = [
-      {
-        id: "id1",
-        type: "type1",
-        attributes: {
-          name: "name1"
-        }
-      }
-    ]
-    des.process_included(mock_inc)
-      .then((res) => {
-        let shouldbe = {id1_type1: {id: "id1", type: "type1", name: "name1"}};
-        res.should.eql(shouldbe);
-        des.included.should.eql(shouldbe);
-
-        done()
-      })
-      .catch((error) => {
-        done(error);
-      })
-  });
-
 });

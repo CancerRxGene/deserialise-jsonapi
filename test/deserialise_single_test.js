@@ -17,7 +17,8 @@ describe("Single object deserialisation", () => {
     let des = new Deserialiser();
     des.deserialise({})
     .then((res) => {
-      done(new Error('was not supposed to succeed'));
+      throw new Error('was not supposed to succeed');
+      done();
     })
     .catch((error) => {
       error.should.equal("No data found");
