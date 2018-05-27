@@ -10,8 +10,8 @@ describe("Deserialisation include processor", () => {
   it('should return an object', (done) => {
     let des = new Deserialiser();
     des.process_included([])
-      .then((res) => {
-        res.should.eql({})
+      .then(() => {
+        des.included.should.eql({})
         done()
       })
       .catch((error) => {
@@ -28,8 +28,8 @@ describe("Deserialisation include processor", () => {
       }
     ]
     des.process_included(mock_inc)
-      .then((res) => {
-        res.should.eql({itid1_ittype1: {id: "itid1", type: "ittype1"}})
+      .then(() => {
+        des.included.should.eql({itid1_ittype1: {id: "itid1", type: "ittype1"}})
         done()
       })
       .catch((error) => {
@@ -45,9 +45,8 @@ describe("Deserialisation include processor", () => {
       { id: "itid3", type: "ittype3" }
     ]
     des.process_included(mock_inc)
-      .then((res) => {
+      .then(() => {
         let shouldbe = {itid3_ittype3: {id: "itid3", type: "ittype3"}};
-        res.should.eql(shouldbe);
         des.included.should.eql(shouldbe);
         done()
       })
