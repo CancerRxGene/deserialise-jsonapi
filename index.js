@@ -1,1 +1,1 @@
-module.exports = require('./lib/deserializer');
+module.exports = require('./lib/deserialiser');
