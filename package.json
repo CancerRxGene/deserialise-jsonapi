@@ -4,7 +4,7 @@
   "description": "Library to deserialise JSONAPI responses to plain javascript objects.",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon --exec 'mocha -R dot'"
+    "test": "nodemon --exec 'mocha -R dot || exit 1'"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,14 @@
   "bugs": {
     "url": "https://github.com/Donnyvdm/deserialise-jsonapi/issues"
   },
-  "homepage": "https://github.com/Donnyvdm/deserialise-jsonapi#readme"
+  "homepage": "https://github.com/Donnyvdm/deserialise-jsonapi#readme",
+  "dependencies": {
+    "lodash": "^4.17.10"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.17.5"
+  }
 }
