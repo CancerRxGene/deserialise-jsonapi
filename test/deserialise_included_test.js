@@ -55,4 +55,22 @@ describe("Deserialisation include processor", () => {
       })
   });
 
+  it('should handle underscores in item types correctly', (done) => {
+    let des = new Deserialiser();
+    let jsonapi = {included:[
+      {
+        id: "itid1",
+        type: "it_type1"
+      }
+    ]}
+    des.process_included(jsonapi)
+      .then(() => {
+        des.included.should.eql({itid1__it_type1: {id: "itid1", type: "it_type1"}})
+        done()
+      })
+      .catch((error) => {
+        done(error);
+      })
+  });
+
 });

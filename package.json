@@ -4,7 +4,9 @@
   "description": "Library to deserialise JSONAPI responses to plain javascript objects.",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon --exec 'mocha -R dot || exit 1'"
+    "test": "nodemon --exec 'mocha -R dot || exit 1'",
+    "compile": "babel -d lib/ src/ --presets=env",
+    "prepublish": "npm run compile"
   },
   "repository": {
     "type": "git",
@@ -24,6 +26,8 @@
     "lodash": "^4.17.10"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
     "mocha": "^5.2.0",
