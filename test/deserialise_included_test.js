@@ -29,7 +29,7 @@ describe("Deserialisation include processor", () => {
     ]}
     des.process_included(jsonapi)
       .then(() => {
-        des.included.should.eql({itid1_ittype1: {id: "itid1", type: "ittype1"}})
+        des.included.should.eql({itid1__ittype1: {id: "itid1", type: "ittype1"}})
         done()
       })
       .catch((error) => {
@@ -46,7 +46,7 @@ describe("Deserialisation include processor", () => {
     ]}
     des.process_included(jsonapi)
       .then(() => {
-        let shouldbe = {itid3_ittype3: {id: "itid3", type: "ittype3"}};
+        let shouldbe = {itid3__ittype3: {id: "itid3", type: "ittype3"}};
         des.included.should.eql(shouldbe);
         done()
       })
