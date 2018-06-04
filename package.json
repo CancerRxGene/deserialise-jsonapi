@@ -6,7 +6,7 @@
   "scripts": {
     "test": "nodemon --exec 'mocha -R dot || exit 1'",
     "compile": "babel -d lib/ src/ --presets=env",
-    "prepublish": "npm run compile"
+    "prepare": "npm run compile"
   },
   "repository": {
     "type": "git",
