@@ -4,7 +4,7 @@
   "description": "Library to deserialise JSONAPI responses to plain javascript objects.",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon --exec 'mocha -R dot || exit 1'",
+    "test": "nodemon --ignore lib/ --exec 'babel -d lib/ src/ --presets=env && mocha -R dot || exit 1'",
     "compile": "babel -d lib/ src/ --presets=env",
     "prepare": "npm run compile"
   },
@@ -23,13 +23,12 @@
   },
   "homepage": "https://github.com/Donnyvdm/deserialise-jsonapi#readme",
   "dependencies": {
-    "lodash": "^4.17.10"
+    "lodash": "^4.17.10",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
     "chai": "^4.1.2",
-    "chai-as-promised": "^7.1.1",
     "mocha": "^5.2.0",
     "nodemon": "^1.17.5"
   }
