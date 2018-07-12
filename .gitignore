@@ -62,3 +62,6 @@ typings/
 
 # transpiled library
 lib/
+
+# Editor
+.idea/*
