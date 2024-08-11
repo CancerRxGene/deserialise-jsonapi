@@ -1,6 +1,6 @@
 {
   "name": "deserialise-jsonapi",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "Library to deserialise JSONAPI responses to plain javascript objects.",
   "main": "index.js",
   "scripts": {
