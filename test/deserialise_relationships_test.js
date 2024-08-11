@@ -1,15 +1,15 @@
-const chai = require("chai");
-const chaiAsPromised = require("chai-as-promised");
+import chai from 'chai';
+import chaiAsPromised from 'chai-as-promised';
 chai.use(chaiAsPromised);
 const should = chai.should();
 
-const Deserialiser = require('../lib/deserialiser')
+import Deserialiser from '../lib/deserialiser.js';
 
 describe("Deserialisation relationship resolver", () => {
 
   it('should deserialise list relationships', (done) => {
     let des = new Deserialiser();
-    relationships = {
+    let relationships = {
       children: {
         data: [
           {
@@ -38,7 +38,7 @@ describe("Deserialisation relationship resolver", () => {
 
   it('should ignore relationships without data', (done) => {
     let des = new Deserialiser();
-    relationships = {
+    let relationships = {
       children: {
         links: {
           self: "testurl",

@@ -1,8 +1,8 @@
 'use strict';
 
-let _isArray = require('lodash/isArray');
-let _isPlainObject = require('lodash/isPlainObject');
-let _assign = require('lodash/assign');
+import _isArray from 'lodash/isArray.js';
+import _isPlainObject from 'lodash/isPlainObject.js';
+import _assign from 'lodash/assign.js';
 
 class Deserialiser {
 
@@ -159,4 +159,4 @@ class Deserialiser {
 
 }
 
-module.exports = Deserialiser;
+export default Deserialiser;
