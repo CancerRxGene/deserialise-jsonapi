@@ -1,1 +1,1 @@
-module.exports = require('./lib/deserialiser');
+export { default } from './lib/deserialiser.js';

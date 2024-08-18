@@ -3,7 +3,7 @@ import chaiAsPromised from 'chai-as-promised';
 chai.use(chaiAsPromised);
 const should = chai.should();
 
-import Deserialiser from '../lib/deserialiser.js';
+import Deserialiser from '../index.js';
 
 describe("Single object deserialisation", () => {
 
