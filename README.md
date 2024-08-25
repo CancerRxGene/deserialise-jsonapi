@@ -31,4 +31,4 @@ let response = fetch('http://your-jsonapi.com/url')
 ## Status
 This package should be considered early beta. Though it is used on multiple production websites, the api could still change without warning.
 
-version 0.1.1
+version 0.1.2

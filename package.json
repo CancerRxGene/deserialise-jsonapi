@@ -1,6 +1,6 @@
 {
   "name": "deserialise-jsonapi",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Library to deserialise JSONAPI responses to plain javascript objects.",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Donnyvdm/deserialise-jsonapi.git"
+    "url": "git+https://github.com/CancerRxGene/deserialise-jsonapi.git"
   },
   "keywords": [
     "javascript",
@@ -19,9 +19,9 @@
   "author": "Donny van der Meer",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Donnyvdm/deserialise-jsonapi/issues"
+    "url": "https://github.com/CancerRxGene/deserialise-jsonapi/issues"
   },
-  "homepage": "https://github.com/Donnyvdm/deserialise-jsonapi#readme",
+  "homepage": "https://github.com/CancerRxGene/deserialise-jsonapi#readme",
   "dependencies": {
     "lodash": "^4.17.10"
   },
